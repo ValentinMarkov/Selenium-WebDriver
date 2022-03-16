@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 # Some basic navigation to www.amazon.com
 
 # Create driver instance
-service = Service('C:\\Users\\Lenovo\\Downloads\\chromedriver.exe')
+service = Service('C:\\Users\\ValMar\\Downloads\\chromedriver.exe')
 
 driver = webdriver.Chrome(service=service)
 url = "https://www.amazon.com"
@@ -14,10 +14,21 @@ driver.get(url)
 
 driver.maximize_window()
 
-print(driver.title)
+search_field = driver.find_element(By.CSS_SELECTOR, "#twotabsearchtextbox")
+search_field.send_keys("mouse")
 
-change_language_icon = driver.find_element(By.CSS_SELECTOR, "#nav-tools .icp-nav-flag")
-change_language_icon.click()
-time.sleep(3)
+search_btn = driver.find_element(By.CSS_SELECTOR, '#nav-search-submit-button')
+search_btn.click()
+
+list_of_items = driver.find_elements(By.CSS_SELECTOR, '.s-main-slot .s-result-item span.a-size-medium')
+
+title_list = []
+for item in list_of_items:
+    title_list.append(item.text)
+
+counter = 0
+for mouse in title_list:
+    counter += 1
+    print(f'MOUSE #{counter}: {mouse}\n')
 
 driver.quit()
