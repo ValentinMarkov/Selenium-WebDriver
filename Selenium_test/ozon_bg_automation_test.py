@@ -19,7 +19,8 @@ driver.get(url)
 
 def write_up_item_title(up_int):
     """Create new txt file with test result"""
-    fp = open('ozon_reports/' + datetime.datetime.now().strftime("%Y-%m-%d - %H.%M.%S") + '.txt', 'w+', encoding="utf-8")
+    fp = open('ozon_reports/' + datetime.datetime.now().strftime("%Y-%m-%d - %H.%M.%S") + '.txt', 'w+',
+              encoding="utf-8")
     count = 0
     for i in up_int:
         count += 1
@@ -37,6 +38,29 @@ search_btn.click()
 
 list_of_items = driver.find_elements(By.CSS_SELECTOR,
                                      '#isp_search_results_container li .isp_product_info .isp_product_title')
+
+list_item_price = driver.find_elements(By.CSS_SELECTOR,
+                                       '.isp_product_price_wrapper span.isp_product_price span.price-main')
+
+new_results = []
+for result in list_item_price:
+    symbols = '\n'
+    for item in symbols:
+        text = result.text.replace(symbols, '')
+        new_results.append(text.strip('.лв'))
+
+print(new_results)
+print(len(new_results))
+
+"""Create dict from two list: item title and price. After txt creation write most expensive and most cheap product
+ title and price"""
+
+# count = 0
+# for price in price_list:
+#     count += 1
+#     print(f'{count}. Item price: {price.strip("\n")}')
+#     print('---' * 20)
+# print('\n')
 
 title_list = []
 for item in list_of_items:
