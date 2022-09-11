@@ -7,8 +7,8 @@ import datetime
 # Some basic navigation to www.amazon.com
 
 # Create driver instance
-# service = Service('C:\\Users\\ValMar\\Downloads\\chromedriver.exe')
-service = Service('C:\\Users\\Lenovo\\Downloads\\chromedriver.exe')
+service = Service('C:\\Users\\ValMar\\Downloads\\chromedriver.exe')
+# service = Service('C:\\Users\\Lenovo\\Downloads\\chromedriver.exe')
 
 driver = webdriver.Chrome(service=service)
 url = "https://www.amazon.com"
