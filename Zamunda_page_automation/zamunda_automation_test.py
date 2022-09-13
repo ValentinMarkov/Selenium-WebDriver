@@ -20,12 +20,12 @@ driver.get(url)
 
 def write_up_item_title(data):
     """Create new txt file with test result"""
-    fp = open('zamunda_reports/' + datetime.datetime.now().strftime("%Y-%m-%d - %H:%M:%S") + '.txt', 'w+',
+    fp = open('zamunda_reports/' + datetime.datetime.now().strftime("%Y-%m-%d - %H.%M.%S") + '.txt', 'w+',
               encoding="utf-8")
 
     cnt = 1
 
-    fp.write(f'Tot 10 Torrent from {datetime.datetime.now().strftime("%d-%m-%Y - %H.%M.%S")}\n')
+    fp.write(f'Tot 10 Torrent from {datetime.datetime.now().strftime("%Y-%m-%d - %H.%M.%S")}\n')
     fp.write('---' * 20)
     fp.write('\n')
 
